@@ -35,7 +35,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
-# app_include_js = "/assets/solvronix_pilot_connector/js/solvronix_pilot_connector.js"
+app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=2"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
@@ -272,3 +272,5 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+boot_session = "solvronix_pilot_connector.boot.boot_session"

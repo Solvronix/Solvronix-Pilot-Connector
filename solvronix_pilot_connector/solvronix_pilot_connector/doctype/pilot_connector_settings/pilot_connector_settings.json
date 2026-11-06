@@ -1,0 +1,28 @@
+{
+ "actions": [],
+ "creation": "2026-10-23 16:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": ["enabled", "position", "column_break_1", "pilot_url", "section_access", "allowed_roles"],
+ "fields": [
+  {"default": "1", "description": "Show the Solvronix Pilot button in the desk.", "fieldname": "enabled", "fieldtype": "Check", "label": "Show Pilot Button"},
+  {"default": "Right", "fieldname": "position", "fieldtype": "Select", "label": "Button Position", "options": "Right\nLeft"},
+  {"fieldname": "column_break_1", "fieldtype": "Column Break"},
+  {"default": "https://pilot.solvronix.com", "description": "Change only if Solvronix gives you a different address.", "fieldname": "pilot_url", "fieldtype": "Data", "label": "Pilot Address", "options": "URL", "reqd": 1},
+  {"fieldname": "section_access", "fieldtype": "Section Break", "label": "Who sees the button"},
+  {"description": "Leave empty to show the button to every desk user. What each user can see in Pilot always follows their own ERPNext permissions.", "fieldname": "allowed_roles", "fieldtype": "Table MultiSelect", "label": "Only for these roles", "options": "Pilot Connector Role"}
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-23 16:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Solvronix Pilot Connector",
+ "name": "Pilot Connector Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {"create": 1, "delete": 1, "email": 1, "print": 1, "read": 1, "role": "System Manager", "share": 1, "write": 1}
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
