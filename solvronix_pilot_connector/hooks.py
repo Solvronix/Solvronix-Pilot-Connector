@@ -35,7 +35,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
-app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=4"
+app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=5"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
@@ -274,3 +274,6 @@ after_install = "solvronix_pilot_connector.install.after_install"
 
 
 boot_session = "solvronix_pilot_connector.boot.boot_session"
+
+# Phone alerts: report each new ERPNext notification (the bell) to Pilot (alerts.py).
+doc_events = {"Notification Log": {"after_insert": "solvronix_pilot_connector.alerts.on_notification"}}

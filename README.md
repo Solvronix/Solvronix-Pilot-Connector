@@ -4,6 +4,8 @@ Adds the **Solvronix Pilot** assistant button to every ERPNext desk page, so you
 
 - **Read-only.** The connector only loads the Pilot button. It doesn't create, change or delete anything in ERPNext, and Pilot itself only reads ERPNext with each user's own permissions.
 - **Small.** One settings page (Pilot Connector Settings) and a health check that Pilot uses to show "Installed" in the owner console.
+- **Phone alerts, no setup.** When phone notifications are on in the Pilot console, the connector tells Pilot about each new ERPNext notification (the bell). It sends only the notification's name and recipient. Pilot reads the alert back with that person's own login and shows it on their phone.
+- **Short address.** `your-erpnext-address/pilot` opens Pilot for your company, which is handy on phones.
 - **Needs a Pilot account.** Connect your ERPNext at [pilot.solvronix.com](https://pilot.solvronix.com) first. The button opens Pilot for your site.
 
 Requires ERPNext / Frappe **version 16**. Version 15 support is planned.
@@ -55,6 +57,17 @@ bench restart
 bench --site your-site.example.com uninstall-app solvronix_pilot_connector
 bench restart
 ```
+
+### Versions
+
+| Version | Date | Highlights |
+|---|---|---|
+| **0.1.5** | 2026-11-11 | Phone alerts without setup; `your-erpnext-address/pilot` short address |
+| 0.1.4 | 2026-11-11 | Button code ships inside the app; fresh installs work straight away |
+| 0.1.2 | 2026-11-06 | Install steps and first tests |
+| 0.1.1 | 2026-11-06 | First release: Ask Pilot button, settings, health check |
+
+Full details are in [CHANGELOG.md](CHANGELOG.md). Releases and tags: [GitHub Releases](https://github.com/Solvronix/Solvronix-Pilot-Connector/releases).
 
 ### Support
 
