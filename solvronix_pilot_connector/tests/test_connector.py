@@ -29,6 +29,9 @@ class TestConnector(IntegrationTestCase):
 	def test_pilot_url_must_be_https(self):
 		self.settings.pilot_url = "http://pilot.solvronix.com"
 		self.assertRaises(frappe.ValidationError, self.settings.save)
+		# A failed save has already moved `modified` on this copy: reload before saving again,
+		# as the desk does, or Frappe raises TimestampMismatchError.
+		self.settings = frappe.get_single("Pilot Connector Settings")
 		self.settings.pilot_url = "https://pilot.solvronix.com/some/path"
 		self.settings.save()
 		self.assertEqual(self.settings.pilot_url, "https://pilot.solvronix.com")
@@ -37,6 +40,8 @@ class TestConnector(IntegrationTestCase):
 		self.settings.update({"enabled": 1, "pilot_url": "https://pilot.solvronix.com", "position": "Right"})
 		self.settings.set("allowed_roles", [])
 		self.settings.save()
+		# frappe.set_user (test setup) empties session.data; a real desk login sets user_type.
+		frappe.session.data.user_type = "System User"
 		boot = frappe._dict()
 		_boot(boot)
 		self.assertEqual(boot.pilot_connector["position"], "right")
