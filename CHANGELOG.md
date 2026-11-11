@@ -2,6 +2,11 @@
 
 All notable changes to the Solvronix Pilot Connector. Versions follow [Semantic Versioning](https://semver.org/). Frappe Cloud and the install steps use the `version-16` branch, which always points at the latest tested release.
 
+## [0.1.6] — 2026-11-11 — Ready for the Frappe Cloud Marketplace
+
+### Changed
+- `pyproject.toml` now states the supported Frappe versions (`[tool.bench.frappe-dependencies]`: Frappe 16) and the repository link, as the Frappe Cloud Marketplace requires. No change to how the app works.
+
 ## [0.1.5] — 2026-11-11 — Phone alerts without setup
 
 ERPNext alerts reach your team's phones with one tick in the Pilot console. There's no Webhook, no secret key and no JSON to set up.

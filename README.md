@@ -62,7 +62,8 @@ bench restart
 
 | Version | Date | Highlights |
 |---|---|---|
-| **0.1.5** | 2026-11-11 | Phone alerts without setup; `your-erpnext-address/pilot` short address |
+| **0.1.6** | 2026-11-11 | Ready for the Frappe Cloud Marketplace (Frappe 16) |
+| 0.1.5 | 2026-11-11 | Phone alerts without setup; `your-erpnext-address/pilot` short address |
 | 0.1.4 | 2026-11-11 | Button code ships inside the app; fresh installs work straight away |
 | 0.1.2 | 2026-11-06 | Install steps and first tests |
 | 0.1.1 | 2026-11-06 | First release: Ask Pilot button, settings, health check |
