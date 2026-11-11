@@ -8,6 +8,7 @@ from frappe.tests import IntegrationTestCase
 from solvronix_pilot_connector import __version__
 from solvronix_pilot_connector.api import ping
 from solvronix_pilot_connector.boot import _boot
+from solvronix_pilot_connector.install import ensure_settings
 
 
 class TestConnector(IntegrationTestCase):
@@ -45,3 +46,16 @@ class TestConnector(IntegrationTestCase):
 		boot = frappe._dict()
 		_boot(boot)
 		self.assertNotIn("pilot_connector", boot)
+
+	def test_fresh_install_stores_defaults(self):
+		frappe.db.delete("Singles", {"doctype": "Pilot Connector Settings"})
+		frappe.clear_document_cache("Pilot Connector Settings", "Pilot Connector Settings")
+		ensure_settings()
+		self.assertEqual(frappe.db.get_single_value("Pilot Connector Settings", "enabled", cache=False), 1)
+		self.assertEqual(frappe.db.get_single_value("Pilot Connector Settings", "pilot_url", cache=False), "https://pilot.solvronix.com")
+		self.assertTrue(ping()["enabled"])
+
+	def test_ping_follows_settings(self):
+		self.settings.enabled = 0
+		self.settings.save()
+		self.assertFalse(ping()["enabled"])

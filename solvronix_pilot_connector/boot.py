@@ -1,8 +1,11 @@
 # Copyright (c) 2026, Solvronix and contributors
-"""Tell the desk whether to load the Pilot button, and where from. Runs once per session."""
+"""Tell the desk whether to load the Pilot button, and which Pilot server the chat panel
+opens from. Runs once per session."""
 
 import frappe
 from frappe.utils import get_host_name
+
+from solvronix_pilot_connector import __version__
 
 
 def boot_session(bootinfo):
@@ -26,4 +29,6 @@ def _boot(bootinfo):
 		"pilot_url": settings.pilot_url or "https://pilot.solvronix.com",
 		"site": get_host_name(),
 		"position": (settings.position or "Right").lower(),
+		# Cache key for the bundled button script: changes with every connector release.
+		"version": __version__,
 	}

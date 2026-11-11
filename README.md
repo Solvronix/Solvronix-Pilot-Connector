@@ -14,10 +14,12 @@ Run as the bench user on your ERPNext server:
 
 ```bash
 cd ~/frappe-bench
-bench get-app https://github.com/Solvronix/Solvronix-Pilot-Connector --branch main
+bench get-app https://github.com/Solvronix/Solvronix-Pilot-Connector --branch version-16
 bench --site your-site.example.com install-app solvronix_pilot_connector
 bench restart
 ```
+
+Branch `version-16` is for Frappe/ERPNext v16 (`main` has the same code).
 
 Reload ERPNext once. The Pilot button appears at the bottom of each desk page, and the Pilot owner console (step 3) shows **Installed**.
 

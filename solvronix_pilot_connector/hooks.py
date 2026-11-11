@@ -35,7 +35,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
-app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=2"
+app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=4"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
@@ -96,7 +96,7 @@ app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=2"
 # ------------
 
 # before_install = "solvronix_pilot_connector.install.before_install"
-# after_install = "solvronix_pilot_connector.install.after_install"
+after_install = "solvronix_pilot_connector.install.after_install"
 
 # Uninstallation
 # ------------

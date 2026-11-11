@@ -10,5 +10,6 @@ def ping():
 	return {
 		"app": "solvronix_pilot_connector",
 		"version": __version__,
-		"enabled": bool(frappe.db.get_single_value("Pilot Connector Settings", "enabled")),
+		# get_cached_doc applies field defaults (same source as boot.py), get_single_value does not.
+		"enabled": bool(frappe.get_cached_doc("Pilot Connector Settings").enabled),
 	}
