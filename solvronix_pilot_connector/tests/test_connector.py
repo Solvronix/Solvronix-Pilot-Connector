@@ -6,7 +6,9 @@ import frappe
 from frappe.tests import IntegrationTestCase
 
 from solvronix_pilot_connector import __version__
-from solvronix_pilot_connector.api import ping
+from unittest.mock import patch
+
+from solvronix_pilot_connector.api import button_config, ping
 from solvronix_pilot_connector.boot import _boot
 from solvronix_pilot_connector.install import ensure_settings
 
@@ -64,3 +66,26 @@ class TestConnector(IntegrationTestCase):
 		self.settings.enabled = 0
 		self.settings.save()
 		self.assertFalse(ping()["enabled"])
+
+	def test_saving_tells_open_desks_without_sending_settings(self):
+		"""The button updates without a reload: open desks are told to ask again, nothing more."""
+		with patch("frappe.publish_realtime") as publish:
+			self.settings.position = "Left" if self.settings.position != "Left" else "Right"
+			self.settings.save()
+		publish.assert_called_once_with("solvronix_pilot_connector_changed", {}, after_commit=True)
+
+	def test_button_config_follows_the_saved_settings(self):
+		self.settings.update({"enabled": 1, "pilot_url": "https://pilot.solvronix.com", "position": "Left"})
+		self.settings.set("allowed_roles", [])
+		self.settings.save()
+		frappe.session.data.user_type = "System User"
+		self.assertEqual(button_config()["position"], "left")
+		self.settings.enabled = 0
+		self.settings.save()
+		self.assertIsNone(button_config())
+		# Website users and guests never get a button.
+		frappe.session.data.user_type = "Website User"
+		self.settings.enabled = 1
+		self.settings.save()
+		self.assertIsNone(button_config())
+

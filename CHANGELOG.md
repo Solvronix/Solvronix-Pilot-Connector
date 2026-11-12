@@ -2,6 +2,12 @@
 
 All notable changes to the Solvronix Pilot Connector. Versions follow [Semantic Versioning](https://semver.org/). Frappe Cloud and the install steps use the `version-16` branch, which always points at the latest tested release.
 
+## [0.1.7] — 2026-11-12 — Button settings apply without a reload
+
+### Changed
+- **Changes in Pilot Connector Settings apply at once.** Turning the button on or off, moving it left or right, or changing who sees it now updates the button in every open desk tab within a second or two, without reloading the page. Saving the settings sends open desks a signal with no data in it; each desk then asks the server for its own button again, with the same rules as at login (desk users only, allowed roles).
+- Where live updates (socket.io) are not running, the tab you saved in still updates right away; other tabs pick it up at their next reload, as before.
+
 ## [0.1.6] — 2026-11-11 — Ready for the Frappe Cloud Marketplace
 
 ### Changed

@@ -35,7 +35,7 @@ app_license = "mit"
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
-app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=6"
+app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=7"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/solvronix_pilot_connector/css/solvronix_pilot_connector.css"
@@ -53,6 +53,7 @@ app_include_js = "/assets/solvronix_pilot_connector/js/pilot_connector.js?v=6"
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Pilot Connector Settings": "public/js/pilot_connector_settings.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_kanban_js = {"doctype" : "public/js/doctype_kanban.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}

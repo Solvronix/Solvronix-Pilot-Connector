@@ -17,15 +17,23 @@ def boot_session(bootinfo):
 
 
 def _boot(bootinfo):
+	cfg = button_config()
+	if cfg:
+		bootinfo.pilot_connector = cfg
+
+
+def button_config() -> dict | None:
+	"""The Pilot button for the current user, or None when they should not see it.
+	Used at desk load (boot) and again when the settings change (api.button_config)."""
 	if frappe.session.user == "Guest" or frappe.session.data.get("user_type") != "System User":
-		return
+		return None
 	settings = frappe.get_cached_doc("Pilot Connector Settings")
 	if not settings.enabled:
-		return
+		return None
 	allowed = {row.role for row in settings.allowed_roles}
 	if allowed and not allowed & set(frappe.get_roles()):
-		return
-	bootinfo.pilot_connector = {
+		return None
+	return {
 		"pilot_url": settings.pilot_url or "https://pilot.solvronix.com",
 		"site": get_host_name(),
 		"position": (settings.position or "Right").lower(),

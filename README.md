@@ -10,6 +10,20 @@ Adds the **Solvronix Pilot** assistant button to every ERPNext desk page, so you
 
 Requires ERPNext / Frappe **version 16**. Version 15 support is planned.
 
+### Screenshots
+
+**Ask about your data without leaving the page.** The Pilot panel opens over any desk page, with quick answers for your role.
+
+![Pilot chat panel over the ERPNext desk](docs/screenshots/chat-panel.png)
+
+**Choose who sees the button.** Pilot Connector Settings: on or off, position, and roles.
+
+![Pilot Connector Settings](docs/screenshots/connector-settings.png)
+
+**ERPNext alerts on your phone.** Assignments, mentions and approvals arrive like any app's notifications.
+
+<img src="docs/screenshots/phone-alerts.jpeg" alt="ERPNext alerts in the Pilot app on a phone" width="320">
+
 ### Install on your own server
 
 Run as the bench user on your ERPNext server:
@@ -62,6 +76,7 @@ bench restart
 
 | Version | Date | Highlights |
 |---|---|---|
+| **0.1.7** | 2026-11-12 | Button settings apply without a reload |
 | **0.1.6** | 2026-11-11 | Ready for the Frappe Cloud Marketplace (Frappe 16) |
 | 0.1.5 | 2026-11-11 | Phone alerts without setup; `your-erpnext-address/pilot` short address |
 | 0.1.4 | 2026-11-11 | Button code ships inside the app; fresh installs work straight away |

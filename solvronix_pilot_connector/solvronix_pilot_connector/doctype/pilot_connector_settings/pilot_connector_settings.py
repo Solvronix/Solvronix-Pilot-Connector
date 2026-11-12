@@ -5,6 +5,8 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 
+CHANGED_EVENT = "solvronix_pilot_connector_changed"
+
 
 class PilotConnectorSettings(Document):
 	def validate(self):
@@ -16,3 +18,7 @@ class PilotConnectorSettings(Document):
 	def on_update(self):
 		# Boot info carries the button settings: make every user pick up the change.
 		frappe.clear_cache()
+		# Open desks re-read their own button settings now (api.button_config), so a change
+		# shows without a reload. The message carries nothing: each user's settings, roles
+		# included, are checked on the server.
+		frappe.publish_realtime(CHANGED_EVENT, {}, after_commit=True)
